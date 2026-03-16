@@ -61,6 +61,26 @@ int LeerNumero(string mensaje)
 
 	return numero;
 }
+void EvaluarContenido()
+{ 
+	Console.WriteLine("\n--- Evaluar contenido ---");
+	Console.WriteLine("tipo pelicula /serie / documental / evento)");
+	string tipo =
+Console.ReadLine().ToLower();
+	int duracion = LeerNumero("duracion en minutos");
+	Console.WriteLine("clasificacion(todo / +13 / +18)");
+	string clasificacion = Console.ReadLine().ToLower();
+
+	int hora;
+	do
+	{
+		hora = LeerNumero("Hora programada (0-23): ");
+	}
+
+
+
+
+
 
 
 
