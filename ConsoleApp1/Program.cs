@@ -1,4 +1,5 @@
 ﻿//SIMULADOR DE DECISIONES PARA PLATAFORMA DE STREAMING
+
 int totalEvaluados = 0;
 int publicados = 0;
 int rechazados = 0;
@@ -18,6 +19,7 @@ void MostrarMenu()
 	Console.WriteLine("4.reiniciar estadisticas");
 	Console.WriteLine("5. salir");
 	Console.WriteLine("Seecione una opcion");
+	opcion =int.Parse(Console.ReadLine());
 }
 do
 {
@@ -62,10 +64,11 @@ int LeerNumero(string mensaje)
 	return numero;
 }
 void EvaluarContenido()
-{ 
+{
 	Console.WriteLine("\n--- Evaluar contenido ---");
 	Console.WriteLine("tipo pelicula /serie / documental / evento)");
 	string tipo =
+
 Console.ReadLine().ToLower();
 	int duracion = LeerNumero("duracion en minutos");
 	Console.WriteLine("clasificacion(todo / +13 / +18)");
@@ -76,6 +79,78 @@ Console.ReadLine().ToLower();
 	{
 		hora = LeerNumero("Hora programada (0-23): ");
 	}
+	while (hora < 0 || hora > 23);
+
+}
+Console.Write("Nivel de producción (bajo / medio / alto): ");
+string produccion = Console.ReadLine().ToLower();
+
+totalEvaluados++;
+
+string tipo = "";
+int duracion = 0;
+string clasificacion = "";
+int hora = 0;
+
+
+
+bool valido = ValidarContenido(tipo, duracion, clasificacion, hora, produccion);
+
+if (!valido)
+{
+	Console.WriteLine("DECISIÓN: Rechazar contenido.");
+	rechazados++;
+	return;
+}
+
+string impacto = CalcularImpacto(duracion, produccion, hora);
+
+TomarDecision(impacto);
+
+bool ValidarContenido(string tipo, int duracion, string clasificacion, int hora, string produccion)
+{
+	bool valido = true;
+	if (clasificacion == "+13")
+	{
+		if (hora < 6 || hora > 22)
+			valido = false;
+	}
+	else if (clasificacion == "+18")
+	{
+		if (!(hora >= 22 || hora <= 5))
+			valido = false;
+	}
+	if (tipo == "pelicula")
+	{
+		if (duracion < 60 || duracion > 180)
+			valido = false;
+	}
+	else if (tipo == "serie")
+	{
+		if (duracion < 20 || duracion > 90)
+			valido = false;
+	}
+	else if (tipo == "documental")
+	{
+		if (duracion < 30 || duracion > 120)
+			valido = false;
+	}
+	else if (tipo == "evento")
+	{
+		if (duracion < 30 || duracion > 240)
+			valido = false;
+	}
+	else
+	{
+		valido = false;
+	}
+	if (produccion == "bajo")
+	{
+		if (clasificacion == "+18")
+			valido = false;
+	}
+	return valido;
+}
 
 
 
@@ -86,3 +161,19 @@ Console.ReadLine().ToLower();
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
