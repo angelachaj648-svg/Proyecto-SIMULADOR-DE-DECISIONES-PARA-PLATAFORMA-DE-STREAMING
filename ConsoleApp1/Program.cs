@@ -1,6 +1,5 @@
 ﻿//SIMULADOR DE DECISIONES PARA PLATAFORMA DE STREAMING
 
-using System.Xml;
 
 int totalEvaluados = 0;
 int publicados = 0;
@@ -197,6 +196,18 @@ void TomarDecision(string impacto)
 		publicados++;
 	}
 }
+
+void MotrarReglas ()
+{
+	Console.WriteLine("/n..Reglas del sistema..");
+	Console.WriteLine("/Clasificacion y horario");
+	Console.WriteLine("Todo publico:Cualquier hora");
+	Console.WriteLine("+13: entre 6 y 22");
+	Console.WriteLine("+18:entre 22 y 5");
+	Console.WriteLine("/nDuracion por tipo");
+	
+
+
 
 
 
