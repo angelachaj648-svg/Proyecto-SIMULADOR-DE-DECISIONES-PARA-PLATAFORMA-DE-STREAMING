@@ -1,5 +1,7 @@
 ﻿//SIMULADOR DE DECISIONES PARA PLATAFORMA DE STREAMING
 
+using System.Xml;
+
 int totalEvaluados = 0;
 int publicados = 0;
 int rechazados = 0;
@@ -175,11 +177,27 @@ string CalcularImpacto(int duracion,string produccion,int hora)
 	}
 	else
 	{
-		impacto = "abajo";
+		impacto = "bajo";
 		impactoBajo++;
 	}
 	return impacto;
+
 }
+
+void TomarDecision(string impacto)
+{
+	if (impacto == "alto")
+	{
+		Console.WriteLine("Desicion:Enviar a Revision");
+		enRevision++;
+	}
+	else if (impacto == "medio")
+	{
+		Console.WriteLine("Desicion:Publicar con ajustes");
+		publicados++;
+	}
+}
+
 
 
 
