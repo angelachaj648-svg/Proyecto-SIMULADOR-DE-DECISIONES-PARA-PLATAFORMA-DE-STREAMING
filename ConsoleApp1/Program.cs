@@ -12,6 +12,7 @@ int opcion = 0;
 void MostrarMenu()
 
 {
+	Console.WriteLine("Menu");
 	Console.WriteLine("Simulador de Streaming");
 	Console.WriteLine("1.evaluar nuevo contenido");
 	Console.WriteLine("2.mostrar reglas del sistema ");
@@ -28,21 +29,26 @@ do
 	{
 		case 1:
 			Console.WriteLine("EvaluarContenido");
+
 			break;
 		case 2:
 			Console.WriteLine("MostrarReglas");
+
 			break;
 
 		case 3:
 			Console.WriteLine("MostrarEstadisticas");
+
 			break;
 
 		case 4:
 			Console.WriteLine("ReiniciarEstadisticas");
+
 			break;
 
 		case 5:
 			Console.WriteLine("\nPrograma finalizado.");
+
 			break;
 
 		default:
@@ -65,7 +71,7 @@ int LeerNumero(string mensaje)
 }
 void EvaluarContenido()
 {
-	Console.WriteLine("\n--- Evaluar contenido ---");
+	Console.WriteLine("\n Evaluar contenido ");
 	Console.WriteLine("tipo pelicula /serie / documental / evento)");
 	string tipo =
 
@@ -151,6 +157,30 @@ bool ValidarContenido(string tipo, int duracion, string clasificacion, int hora,
 	}
 	return valido;
 }
+
+string CalcularImpacto(int duracion,string produccion,int hora)
+{
+	string impacto;
+
+
+	if (produccion == "alto" || duracion > 120 || (hora >= 20 && hora <= 23))
+	{
+		impacto = "alto";
+		impactoAlto++;
+	}
+	else if (produccion == "medio" || (duracion >= 60 && duracion <= 120))
+	{
+		impacto = "medio";
+		impactoMedio++;
+	}
+	else
+	{
+		impacto = "abajo";
+		impactoBajo++;
+	}
+	return impacto;
+}
+
 
 
 
