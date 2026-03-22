@@ -228,6 +228,31 @@ void  MostarEstadisticas()
 	Console.WriteLine("Rechazados:" + rechazados);
 	Console.WriteLine("En revicion: " + enRevision);
 
+	string impactoPredominante = "Bajo";
+	if (impactoAlto >= impactoMedio && impactoAlto >= impactoBajo)
+		impactoPredominante = "Alto";
+	else if (impactoMedio >= impactoAlto && impactoAlto && impactoMedio >= impactoBajo)
+		impactoPredominante = "Medio";
+
+	Console.WriteLine("Impacto predominante:" + impactoPredominante);
+}
+
+void ReiniciarEstadisticas()
+{
+	totalEvaluados = 0;
+	publicados = 0;
+	rechazados = 0;
+	enRevision = 0;
+
+	impactoAlto = 0;
+	impactoMedio = 0;
+	impactoBajo = 0;
+
+	
+
+
+
+
 
 			
 	
