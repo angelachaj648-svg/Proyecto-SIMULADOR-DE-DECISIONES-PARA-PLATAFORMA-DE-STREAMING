@@ -205,6 +205,31 @@ void MotrarReglas ()
 	Console.WriteLine("+13: entre 6 y 22");
 	Console.WriteLine("+18:entre 22 y 5");
 	Console.WriteLine("/nDuracion por tipo");
+
+	for (int i = 1; i <= 4; i++)
+	{
+		if (i == 1)
+			Console.WriteLine("Pelicula: 60-180 minutos");
+		else if (i == 2)
+			Console.WriteLine("Serie: 20-90");
+		else if (i == 3)
+			Console.WriteLine("Documental: 30-120 minutos");
+		else
+			Console.WriteLine("Evento en vivo: 30-240 minutos");
+	}
+}
+
+
+void  MostarEstadisticas()
+{
+	Console.WriteLine("/nEstadisticas");
+	Console.WriteLine("Total evaluados: " + totalEvaluados);
+	Console.WriteLine("Publicados:" + publicados);
+	Console.WriteLine("Rechazados:" + rechazados);
+	Console.WriteLine("En revicion: " + enRevision);
+
+
+			
 	
 
 
